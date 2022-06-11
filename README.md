@@ -4,6 +4,10 @@
 
   ![image](https://user-images.githubusercontent.com/102101481/173196576-b6cef4db-e4df-4126-8d98-fa02c0155402.png)
 
+  ## Link to Deployed App
+
+  https://task-note-peach.herokuapp.com/ 
+
   ## ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
   
   ## Table of Contents:
