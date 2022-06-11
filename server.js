@@ -27,3 +27,21 @@ app.get("/api/notes", (req, res) => {
         res.json(JSON.parse(data))
     })
 });
+
+app.post("/api/notes", (req, res) => {
+    const newNote = {
+        title: req.body.title,
+        text: req.body.text,
+        id: uuidv4()
+    }
+    fs.readFile("db/db.json", 'utf-8', function(err, data) {
+        if (err) throw err;
+        const noteData = JSON.parse(data)
+        noteData.push(newNote)
+        fs.writeFileSync("./db/db.json", JSON.stringify(noteData), function(err) {
+            if (err) throw err;
+            console.log("new note saved!");
+     });
+        res.sendFile(path.join(__dirname, "/public/notes.html"));
+    })
+});
