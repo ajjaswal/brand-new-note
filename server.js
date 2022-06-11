@@ -45,7 +45,6 @@ app.post("/api/notes", (req, res) => {
         res.sendFile(path.join(__dirname, "/public/notes.html"));
     })
 });
-
 app.delete("/api/notes/:id", (req, res) => {
     var clicked = req.params.id
     fs.readFile("db/db.json", 'utf-8', function(err, data) {
@@ -59,7 +58,6 @@ app.delete("/api/notes/:id", (req, res) => {
         res.sendFile(path.join(__dirname, "/public/notes.html"));
     })
 })
-
 app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+    console.log(`Using port ${PORT}!`);
 });
