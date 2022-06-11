@@ -1,4 +1,4 @@
-
+// packages
 const express = require('express');
 const fs = require('fs');
 const { v4: uuidv4} = require('uuid')
@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
+
+// routes
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"));
 });
@@ -28,6 +30,7 @@ app.get("/api/notes", (req, res) => {
     })
 });
 
+// new note function
 app.post("/api/notes", (req, res) => {
     const newNote = {
         title: req.body.title,
@@ -45,6 +48,7 @@ app.post("/api/notes", (req, res) => {
         res.sendFile(path.join(__dirname, "/public/notes.html"));
     })
 });
+// delete note function
 app.delete("/api/notes/:id", (req, res) => {
     var clicked = req.params.id
     fs.readFile("db/db.json", 'utf-8', function(err, data) {
@@ -58,6 +62,7 @@ app.delete("/api/notes/:id", (req, res) => {
         res.sendFile(path.join(__dirname, "/public/notes.html"));
     })
 })
+// listener for port
 app.listen(PORT, () => {
     console.log(`Using port ${PORT}!`);
 });
